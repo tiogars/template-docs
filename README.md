@@ -1,2 +1,3 @@
-# template-mkdocs
-Mkdocs to render template docs
+# template-docs
+
+Docs for template components
