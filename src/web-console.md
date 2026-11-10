@@ -127,8 +127,8 @@ Reports are written to:
 
 | Stack | Report location |
 | --- | --- |
-| Java API | `java/api/target/site/jacoco/index.html` |
-| Java client | `java/java-client/target/site/jacoco/index.html` |
-| React backend | `react/backend/coverage/index.html` |
-| React client | `react/react-client/coverage/index.html` |
-| Dart client | `flutter/dart-client/coverage/lcov.info` |
+| Java API | `template-java-api/target/site/jacoco/index.html` |
+| Java client | `template-java-api-client/target/site/jacoco/index.html` |
+| React backend | `template-react-backend/coverage/index.html` |
+| React client | `template-react-api-client/coverage/index.html` |
+| Dart client | `template-flutter-api-client/coverage/lcov.info` |

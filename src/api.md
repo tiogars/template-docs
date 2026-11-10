@@ -273,7 +273,7 @@ most recent editor, not a full revision history.
 
 **Before deploying this API version, stop API writers, back up the database, and
 run
-[the manual PostgreSQL task-domain migration](https://github.com/tiogars/template-java-solution/blob/main/java/api/src/main/resources/db/manual/task-domains.sql).**
+[the manual PostgreSQL task-domain migration](https://github.com/tiogars/template-java-api/blob/main/src/main/resources/db/manual/task-domains.sql).**
 Run it for both existing and new databases, using the same schema/search path as
 the API. For example, with PostgreSQL connection variables configured:
 

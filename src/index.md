@@ -43,24 +43,25 @@ Use these maintained baseline versions for local development and CI. Newer compa
 
 ### 1. Start the stack
 
-From the repository root:
+From the `template-docker` repository:
 
-Apply the [task-domain database migration](api.md#persistence-auditing-and-required-migration) before starting the API, including for a new database.
+On a new volume, PostgreSQL applies the [task-domain database migration](api.md#persistence-auditing-and-required-migration) automatically; apply it manually on an existing database.
 
 ```bash
-make docker-up
+cp .env.example .env   # local login: admin / change-me
+docker compose -f docker-compose.yml -f compose.local.yml up -d --wait
 ```
 
-Compose publishes the documentation on `8000`, the API on `8989`, and the console on `5173`.
+The local override publishes the API on `8989` and the console on `5173`.
 
 ### 2. Create a Task
 
-Log in first (local defaults are `admin` / `admin`) and use the returned token:
+Log in first (with `.env.example`, `admin` / `change-me`) and use the returned token:
 
 ```bash
 TOKEN=$(curl -s -X POST http://localhost:8989/api/v1/auth/login \
 	-H "Content-Type: application/json" \
-	-d '{"username":"admin","password":"admin"}' | jq -r .token)
+	-d '{"username":"admin","password":"change-me"}' | jq -r .token)
 
 curl -X POST http://localhost:8989/api/v1/task \
 	-H "$(printf 'Authorization: %s %s' Bearer "$TOKEN")" \
@@ -100,7 +101,7 @@ Swagger UI is available at `http://localhost:8989/swagger-ui.html`.
 ### 4. Stop the stack
 
 ```bash
-make docker-down
+docker compose -f docker-compose.yml -f compose.local.yml down
 ```
 
 The PostgreSQL volume is retained. Follow [Reset the demo database](deployment.md#reset-the-demo-database) when you need a clean database.

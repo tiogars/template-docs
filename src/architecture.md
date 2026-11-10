@@ -45,7 +45,7 @@ The service maps between these types. This boundary keeps the public contract st
 
 ## Schema Evolution
 
-Apply `java/api/src/main/resources/db/manual/task-domains.sql` before starting this version, including on an existing demo database. See the [migration instructions](api.md#persistence-auditing-and-required-migration). The older `domain-template-auditing-soft-delete.sql` script documents the legacy domain's auditing migration.
+Apply `src/main/resources/db/manual/task-domains.sql` from `template-java-api` before starting this version on an existing database; the Dokploy stack runs it automatically on a new volume. See the [migration instructions](api.md#persistence-auditing-and-required-migration). The older `domain-template-auditing-soft-delete.sql` script documents the legacy domain's auditing migration.
 
 Hibernate is configured with `spring.jpa.hibernate.ddl-auto: update` for this runnable application. It does not migrate legacy business data or remove unmapped tables; existing volumes may retain `domain_templates` or `domain_records`.
 
